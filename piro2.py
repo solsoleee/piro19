@@ -1,3 +1,3 @@
 def prio2():
-    print("cart")
+    print("로그인")
     return 1

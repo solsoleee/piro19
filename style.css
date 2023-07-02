@@ -1,0 +1,586 @@
+@import "./reset.css";
+
+/* 공통 (body, h1, main 등 id, class 제외한 태그) */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(40px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+:root {
+  --grey: #ddd;
+  --skyblue: #47b2e4;
+  --blue: #37517e;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Jost", sans-serif;
+}
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* 공통 css 끝 */
+
+/* 정근 */
+#demobar {
+  background-color: rgb(2, 59, 109);
+  padding: 4px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+#demo-left a > img {
+  height: 27px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+#demo-center > .arrow {
+  display: inline-block;
+}
+
+#demo-center > .arrow::after {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-top: 8px;
+  border-top: 0.15rem solid rgba(255, 255, 255, 0.6);
+  border-right: 0.15rem solid rgba(255, 255, 255, 0.6);
+}
+
+#demo-center > .prev::after {
+  transform: rotate(225deg);
+}
+#demo-center > .next::after {
+  transform: rotate(45deg);
+}
+
+#demo-center > .arrow:hover::after {
+  border-color: white;
+}
+
+#demo-center > a {
+  font-size: 1rem;
+  padding: 0;
+  font-weight: 700;
+  color: #fff;
+  margin: -2px 10px 0 10px;
+  line-height: 0;
+}
+
+#demo-device {
+  display: inline-block;
+}
+
+.demo-image {
+  filter: invert(63%) sepia(21%) saturate(406%) hue-rotate(166deg)
+    brightness(96%) contrast(89%);
+  width: 22px;
+  height: 22px;
+  margin-top: 3px;
+  margin-right: 5px;
+}
+
+#demo-device .demo-image {
+  width: 36px;
+  height: 22px;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 1px;
+}
+
+.demo-image:hover {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(78deg) brightness(104%)
+    contrast(104%);
+  transition: 0.3s;
+}
+
+#demo-right {
+  margin-right: 190px;
+}
+
+#demo-download {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 180px;
+  background-color: #00a6eb;
+  right: 0;
+  top: 0;
+  color: white;
+}
+
+#demo-download:hover {
+  background-color: #00b4ff;
+  transition: 0.3s;
+}
+
+.demo-download-image {
+  width: 22px;
+  height: 22px;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(78deg) brightness(104%)
+    contrast(104%);
+}
+
+#navbar {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 100px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: rgba(40, 58, 90, 0.9);
+}
+
+#navbar > a {
+  width: 60px;
+  font-size: 2rem;
+  margin: 0;
+  margin-right: auto;
+  padding: 0;
+  line-height: 1;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+#nav-menu {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+#nav-menu > a,
+#nav-menu > div {
+  padding: 10px 0 10px 30px;
+}
+
+#nav-menu > div {
+  display: flex;
+}
+
+#nav-menu > a:nth-child(1) {
+  color: var(--skyblue);
+}
+
+#nav-menu > a:hover,
+#nav-menu > div:hover {
+  color: var(--skyblue);
+}
+
+#nav-menu > .nav-btn {
+  padding: 8px 20px;
+  margin-left: 30px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1rem;
+  border: 2px solid var(--skyblue);
+  font-weight: 600;
+}
+
+.nav-arrow::before {
+  content: "";
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-left: 6px;
+  margin-bottom: 5px;
+  border-top: 0.12rem solid white;
+  border-right: 0.12rem solid white;
+  transform: rotate(135deg);
+}
+
+#nav-dd {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 10px;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.dropdown-content > a,
+.dropdown-content > div {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover,
+#nav-dd > div:hover,
+.dropdown-content > div:hover {
+  color: var(--skyblue);
+}
+
+#nav-dd:hover > .dropdown-content {
+  display: block;
+  animation: fadein 1s;
+}
+
+.deepdropdown-content {
+  display: none;
+  position: absolute;
+  top: 50px;
+  left: 160px;
+  background-color: #f1f1f1;
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5px;
+}
+
+.deepdropdown-content > a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+#deepdd:hover .deepdropdown-content {
+  display: block;
+  animation: fadein 1s;
+}
+
+#home {
+  background: var(--blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0 100px;
+}
+
+#home-left {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+}
+
+#home-left > h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 3.5rem;
+  margin-bottom: 20px;
+}
+
+#home-left > p {
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 50px;
+  font-weight: bold;
+}
+
+#home-btn {
+  display: flex;
+  align-items: center;
+}
+
+#home-btn > a {
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 11px 28px;
+  margin-right: 20px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  background: var(--skyblue);
+}
+
+#home-btn > a:hover {
+  background: #209dd8;
+}
+
+#home-watch {
+  display: flex;
+  align-items: center;
+}
+
+#home-watch > img {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(78deg) brightness(104%)
+    contrast(104%);
+}
+
+#home-watch:hover > img {
+  filter: invert(65%) sepia(14%) saturate(3314%) hue-rotate(169deg)
+    brightness(101%) contrast(79%);
+  transition: 0.3s;
+}
+
+#home-right {
+  margin: 0 50px;
+}
+
+#home-right > img {
+  width: 600px;
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+#clients {
+  background: #f3f5fa;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+}
+
+#clients > div {
+  width: 14%;
+  display: flex;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+#clients img {
+  max-width: 40%;
+  display: inline-block;
+  object-fit: fill;
+  padding: 15px 0;
+  filter: grayscale(100);
+}
+
+#clients img:hover {
+  filter: none;
+  transform: scale(1.1);
+}
+/* 정근 css 끝 */
+
+/* 지수 */
+/* 지수 css 끝 */
+
+/* 우진 */
+/* 우진 css 끝 */
+
+/* 한솔 */
+#contact {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+#contact__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  /* margin:0 auto; */
+  padding: 60px 0px;
+}
+.top {
+  text-align: center;
+  padding-bottom: 30px;
+}
+.title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  color: var(--blue);
+}
+.title h2::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: var(--grey);
+  bottom: 1px;
+  left: calc(50% - 60px);
+}
+.title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--skyblue);
+  bottom: 0;
+  left: calc(50% - 20px);
+}
+.top p {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 0;
+}
+.bottom {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  box-sizing: border-box;
+}
+.contact__inform__box {
+  box-sizing: border-box;
+  display: block;
+  border-top: 3px solid var(--skyblue);
+  border-bottom: 3px solid var(--skyblue);
+  padding: 30px;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.1);
+}
+.contact-box::before,
+.contact-box::after {
+  content: "";
+  display: block;
+  border-bottom: 3px solid var(--skyblue);
+  margin: 30px auto;
+  width: 500px;
+}
+.contact__inform__letf > i {
+  font-size: 20px;
+  background: #e7f5fb;
+  float: left;
+  width: 44px;
+  height: 44px;
+  aspect-ratio: 1/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+.contact__inform__right h4 {
+  text-align: left;
+  padding: 0 0 0 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--blue);
+}
+.contact__inform__right p {
+  text-align: left;
+  padding: 0 0 10px 60px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #6182ba;
+}
+.contact__input__form {
+  margin-top: 3rem;
+  width: 100%;
+  border-top: 3px solid var(--skyblue);
+  border-bottom: 3px solid var(--skyblue);
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+  margin-bottom: 20px;
+}
+.contact__input__row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+.contact__input__form > label {
+  padding-bottom: 8px;
+}
+.contact__input__form > input {
+  height: 44px;
+  box-shadow: none;
+  font-size: 14px;
+  border-radius: 4px;
+}
+.input__value {
+  display: block;
+  border-radius: 5px;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border-width: 0.1px;
+  background-color: #fff;
+  border: #a2a2a2 solid;
+}
+.input__value:focus {
+  border-color: var(--skyblue);
+}
+.contact__input__row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+}
+.contact__input__group {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+.contact__input__group label {
+  display: inline-block;
+  color: #444444;
+  text-align: left;
+  margin-bottom: 8px;
+  cursor: default;
+}
+.send__button {
+  text-align: center !important;
+}
+.send__button > button {
+  background: #47b2e4;
+  border: 0;
+  padding: 12px 34px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+/* 한솔 css 끝 */
+
+/* 정한 */
+/* 정한 css 끝 */
